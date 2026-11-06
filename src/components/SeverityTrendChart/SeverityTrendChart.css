@@ -1,0 +1,179 @@
+/* Tokens only. The severity colors form one ordinal ramp, validated in scripts/check-tokens.mjs. */
+.ds-chart {
+  --_stack: var(--ds-spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--_stack);
+  max-width: 720px;
+  margin: 0;
+  padding: var(--ds-spacing-xl);
+  background: var(--ds-color-bg-surface);
+  color: var(--ds-color-text-primary);
+  border: 1px solid var(--ds-color-border-default);
+  border-radius: var(--ds-radius-md);
+}
+
+.ds-chart__caption {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-xs);
+}
+
+.ds-chart__title {
+  margin: 0;
+  font-size: var(--ds-font-size-md);
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.ds-chart__subtitle,
+.ds-chart__source {
+  margin: 0;
+  font-size: var(--ds-font-size-sm);
+  line-height: 20px;
+  color: var(--ds-color-text-secondary);
+}
+
+.ds-chart__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-spacing-sm) var(--ds-spacing-lg);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--ds-font-size-sm);
+}
+
+.ds-chart__legend li,
+.ds-chart__tooltip-row {
+  display: flex;
+  align-items: center;
+  gap: var(--ds-spacing-sm);
+}
+
+.ds-chart__swatch {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  border-radius: var(--ds-radius-sm);
+}
+
+.ds-chart__plot {
+  position: relative;
+}
+
+.ds-chart__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ds-chart__grid {
+  stroke: var(--ds-color-border-default);
+  stroke-width: 1;
+}
+
+.ds-chart__axis-label {
+  fill: var(--ds-color-text-secondary);
+  font-size: var(--ds-font-size-sm);
+}
+
+.ds-chart__total {
+  fill: var(--ds-color-text-primary);
+  font-size: var(--ds-font-size-sm);
+  font-weight: 600;
+}
+
+.ds-chart__segment {
+  stroke: var(--ds-color-bg-surface);
+}
+
+.ds-chart__tooltip {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  min-width: 140px;
+  padding: var(--ds-spacing-md);
+  background: var(--ds-color-bg-surface);
+  border: 1px solid var(--ds-color-border-default);
+  border-radius: var(--ds-radius-md);
+  font-size: var(--ds-font-size-sm);
+  pointer-events: none;
+}
+
+.ds-chart__tooltip-value {
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.ds-chart__tooltip-total {
+  margin-top: var(--ds-spacing-xs);
+  padding-top: var(--ds-spacing-xs);
+  border-top: 1px solid var(--ds-color-border-default);
+}
+
+.ds-chart > .ds-button {
+  align-self: flex-start;
+}
+
+.ds-chart__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--ds-font-size-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.ds-chart__table th,
+.ds-chart__table td {
+  padding: var(--ds-spacing-sm) var(--ds-spacing-md);
+  border-bottom: 1px solid var(--ds-color-border-default);
+  text-align: right;
+}
+
+.ds-chart__table th:first-child,
+.ds-chart__table td:first-child {
+  text-align: left;
+}
+
+.ds-chart__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.ds-chart__state {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--ds-spacing-md);
+  min-height: 160px;
+  justify-content: center;
+}
+
+.ds-chart__state p {
+  margin: 0;
+}
+
+.ds-chart__skeleton {
+  width: 100%;
+  height: 120px;
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-color-bg-page);
+  animation: ds-chart-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes ds-chart-pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-chart__skeleton {
+    animation: none;
+  }
+}

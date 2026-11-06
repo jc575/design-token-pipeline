@@ -1,0 +1,32 @@
+{
+  "name": "design-token-pipeline",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A small, honest demo of Figma variables to production tokens to a Storybook component, with contrast checks in the build.",
+  "scripts": {
+    "tokens": "node scripts/build-tokens.mjs",
+    "tokens:check": "node scripts/check-tokens.mjs",
+    "storybook": "npm run tokens && npm run tokens:check && storybook dev -p 6006",
+    "build-storybook": "npm run tokens && npm run tokens:check && storybook build",
+    "test:a11y": "node scripts/a11y-stories.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fontsource/inter": "^5.2.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.0",
+    "@storybook/addon-a11y": "^10.6.6",
+    "@storybook/addon-docs": "^10.6.6",
+    "@storybook/react-vite": "^10.6.6",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "playwright": "^1.50.0",
+    "storybook": "^10.6.6",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.0"
+  }
+}

@@ -1,0 +1,34 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { TokenTable } from './TokenTable';
+
+<Meta title="Foundations/Tokens" />
+
+# Tokens
+
+Every visual value in this library starts as a **Figma variable**. A small script exports the variables, builds CSS custom properties, and a build check blocks the merge if contrast or ordering rules break.
+
+## Three tiers
+
+1. **Primitives** are raw values, like `gray-900` or `blue-500`. Nobody uses them directly in components.
+2. **Semantic tokens** name a job, like `color-text-primary` or `color-action-primary-bg`. They alias a primitive and change by mode (Light, Dark).
+3. **Component tokens** are the local custom properties inside a component, like `--_bg` in Button. They only reference semantic tokens.
+
+Why three tiers: a rebrand changes primitives, a new theme changes semantic aliases, and components never change. That is what makes a migration or a second platform cheap.
+
+## Pipeline
+
+1. Figma variables (source of truth)
+2. `figma-variables.json` export
+3. `npm run tokens` builds `tokens.css` (light, dark, and a `prefers-color-scheme` fallback)
+4. `npm run tokens:check` runs WCAG contrast and severity ramp rules
+5. Components consume `var(--ds-...)` only
+
+At production scale, Style Dictionary or Tokens Studio would replace the small build script. The contract stays the same.
+
+## Semantic color tokens
+
+<TokenTable group="color" />
+
+## Static tokens (primitives, spacing, radius, type)
+
+<TokenTable group="static" />

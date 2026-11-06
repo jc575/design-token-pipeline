@@ -1,0 +1,67 @@
+/* Only design tokens appear below. A raw hex value in this file is a bug. */
+.ds-button {
+  --_bg: var(--ds-color-action-primary-bg);
+  --_bg-hover: var(--ds-color-action-primary-bg-hover);
+  --_text: var(--ds-color-action-primary-text);
+  --_border: transparent;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  /* Figma draws the secondary border as an inside stroke, so use an inset shadow to avoid changing the box size. */
+  box-shadow: inset 0 0 0 1px var(--_border);
+  border: 0;
+  border-radius: var(--ds-radius-md);
+  background: var(--_bg);
+  color: var(--_text);
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  /* Medium is the default size. */
+  padding: var(--ds-spacing-sm) var(--ds-spacing-lg);
+  font-size: var(--ds-font-size-md);
+  line-height: 24px;
+}
+
+.ds-button[data-size='small'] {
+  padding: var(--ds-spacing-sm) var(--ds-spacing-md);
+  font-size: var(--ds-font-size-sm);
+  line-height: 20px;
+}
+
+.ds-button[data-intent='secondary'] {
+  --_bg: var(--ds-color-action-secondary-bg);
+  --_bg-hover: var(--ds-color-action-secondary-bg-hover);
+  --_text: var(--ds-color-action-secondary-text);
+  --_border: var(--ds-color-action-secondary-border);
+}
+
+.ds-button[data-intent='danger'] {
+  --_bg: var(--ds-color-action-danger-bg);
+  --_bg-hover: var(--ds-color-action-danger-bg-hover);
+  --_text: var(--ds-color-action-danger-text);
+}
+
+.ds-button:hover:not(:disabled),
+.ds-button[data-preview-state='hover'] {
+  background: var(--_bg-hover);
+}
+
+/* Focus ring: 2px, outside the box, same token as the Figma Focus variants. */
+.ds-button:focus-visible,
+.ds-button[data-preview-state='focus'] {
+  outline: 2px solid var(--ds-color-focus-ring);
+  outline-offset: 0;
+}
+
+.ds-button:disabled {
+  background: var(--ds-color-action-disabled-bg);
+  color: var(--ds-color-action-disabled-text);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.ds-button[data-intent='secondary']:disabled {
+  box-shadow: inset 0 0 0 1px var(--ds-color-border-default);
+}
